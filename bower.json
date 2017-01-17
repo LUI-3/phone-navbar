@@ -1,0 +1,27 @@
+{
+  "name": "LUI-3_phone-navbar",
+  "homepage": "https://github.com/LUI-3/phone-navbar",
+  "authors": [
+    "wufiii@gmail.com"
+  ],
+  "description": "Responsive front-end website framework - Phone - navbar component",
+  "main": "less/phone-navbar.router.less",
+  "keywords": [
+    "responsive",
+    "front-end",
+    "framework",
+    "website",
+    "web"
+  ],
+  "dependencies": {
+      "LUI-3_base": ">=3.0.0"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
