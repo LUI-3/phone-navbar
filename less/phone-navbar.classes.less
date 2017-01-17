@@ -1,0 +1,36 @@
+// LUI3
+// PHONE - NAVBAR
+
+
+.@{lui_class_prefix}_phone_navbar when (@lui_phone_navbar_class_enabled = true){
+	.lui.phone_navbar.this();
+
+	& > a {
+		.lui.phone_navbar.item();
+	}
+}
+
+
+.lui_phone_navbar_overlay {
+	.lui.phone_navbar_overlay.this();
+
+	&.opened {
+		.lui.phone_navbar_overlay.opened();
+	}
+}
+
+html.overlay_opened {
+	overflow: hidden;
+
+	// DISABLE PAGE SCROLLING ON WINDOWS PHONE (IE)
+	-ms-touch-action: none;
+	touch-action: none;
+
+	body {
+		overflow: hidden;
+
+		// DISABLE PAGE SCROLLING ON WINDOWS PHONE (IE)
+		-ms-touch-action: none;
+		touch-action: none;
+	}
+}

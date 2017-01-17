@@ -1,0 +1,99 @@
+// LUI3
+// PHONE - NAVBAR
+
+
+.lui.phone_navbar when (@lui_pagebar_mixins_enabled = true){
+	.this(){
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: white;
+		z-index: 200;
+		height: 60px;
+		z-index: 2010;
+
+		.lui.flexbox.block();
+		.lui.flexbox.align-items(center);
+		.lui.flexbox.justify-content(stretch);
+		border-top: 1px solid silver;
+
+		&.static {
+			position: static;
+			bottom: auto;
+			left: auto;
+			right: auto;
+		}
+	}
+
+	.item(){
+		position: relative;
+		.lui.flexbox.block();
+		.lui.flexbox.align-items(center);
+		.lui.flexbox.justify-content(center);
+		width: 20%;
+		height: 100%;
+		padding: 0 5px;
+		text-decoration: none;
+		color: inherit;
+
+		&:before {
+			position: absolute;
+			top: 15px;
+			right: 0;
+			bottom: 15px;
+			content: "";
+			border-left: 1px solid rgba(0,0,0,0.1);
+		}
+
+		&:last-child:before {
+			display: none;
+		}
+
+		& > div {
+			text-align: center;
+			font-size: 11px;
+			color: gray;
+
+			&:before {
+				display: block;
+				padding: 0 0 5px 0;
+				font-size: 20px;
+			}
+		}
+
+		&:hover {
+			background: rgba(0,0,0,0.05);
+		}
+
+		&.active {
+			background: #1e8de2;
+
+			& > div {
+				color: white;
+			}
+		}
+	}
+}
+
+.lui.phone_navbar_overlay {
+	.this(){
+		position: fixed;
+		top: 100%;
+		left: 0;
+		bottom: -100%;
+		right: 0;
+		z-index: 2000;
+		background: rgba(0,0,0,0.5);
+		opacity: 0;
+		.lui.transition.this(600ms);
+		// GPU ACCELERATION
+		.lui.transform.translate3d(0,0,0);
+	}
+
+	.opened(){
+		top: 0;
+		bottom: 60px;
+		opacity: 1;
+	}
+}
