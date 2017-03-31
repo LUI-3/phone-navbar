@@ -19,6 +19,26 @@
 	&.opened {
 		.lui.phone_navbar_overlay.opened();
 	}
+
+	ul.menu {
+		.lui.phone_navbar_overlay.menu.this();
+
+		li {
+			.lui.phone_navbar_overlay.menu.item();
+
+			&.spacer {
+				.lui.phone_navbar_overlay.menu.spacer();
+			}
+
+			&.head {
+				.lui.phone_navbar_overlay.menu.head();
+			}
+
+			a {
+				.lui.phone_navbar_overlay.menu.link();
+			}
+		}
+	}
 }
 
 html.overlay_opened {
