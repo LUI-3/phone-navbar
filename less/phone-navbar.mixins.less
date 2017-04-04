@@ -52,10 +52,33 @@
 			border-left: 1px solid rgba(0,0,0,0.1);
 		}
 
+		&:hover {
+			background: rgba(0,0,0,0.05);
+		}
+
 		&:last-child:before {
 			display: none;
 		}
 
+		// NUMBER (CAN BE USED FOR BASKET ICON)
+		&[data-number]:after{
+			position: absolute;
+			top: 6px;
+			right: 10px;
+			display: block;
+			width: 17px;
+			height: 17px;
+			line-height: 17px;
+			background: red;
+			border-radius: 30px;
+			text-align: center;
+			font-family: inherit;
+			font-size: 9px;
+			color: white;
+			content: attr(data-number);
+		}
+
+		// ICON AND TEXT STYLES
 		& > div {
 			text-align: center;
 			font-size: 12px;
@@ -68,10 +91,7 @@
 			}
 		}
 
-		&:hover {
-			background: rgba(0,0,0,0.05);
-		}
-
+		// ACTIVE STYLES
 		&.active {
 			background: #1e8de2;
 
@@ -94,7 +114,7 @@
 		opacity: 0;
 		.lui.transition.this(600ms);
 		// GPU ACCELERATION
-		.lui.transform.translate3d(0,0,0);
+		.lui.transform.this(translateZ(0));
 
 		padding: 10px;
 		overflow-x: hidden;

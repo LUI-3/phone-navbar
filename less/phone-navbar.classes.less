@@ -20,6 +20,7 @@
 		.lui.phone_navbar_overlay.opened();
 	}
 
+	// MENU
 	ul.menu {
 		.lui.phone_navbar_overlay.menu.this();
 
@@ -36,6 +37,163 @@
 
 			a {
 				.lui.phone_navbar_overlay.menu.link();
+			}
+		}
+	}
+
+	// EMPTY BASKET
+	.empty_basket {
+		text-align: center;
+		padding: 15px 0;
+
+		&:before {
+			display: block;
+			font-size: 60px;
+			line-height: 60px;
+			height: 60px;
+			color: white;
+		}
+
+		& > .text {
+			padding: 30px 0 40px 0;
+			font-size: 19px;
+			color: white;
+		}
+		& > .spacer {
+			padding: 15px 0;
+			color: white;
+		}
+	}
+
+	// FILLED BASKET
+	.basket {
+		.lui.flexbox.block();
+		.lui.flexbox.flex-direction(column);
+		height: 100%;
+		background: white;
+		color: black;
+		border-radius: 5px;
+		overflow: hidden;
+
+		.lui.transform.this(translateZ(0));
+
+		.head {
+			padding: 15px;
+			background: #f7f7f7;
+			border-bottom: 1px solid #dcdcdc;
+			font-size: 16px;
+			color: #454545;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		.products {
+			.lui.flexbox.flex(1 1 auto);
+			overflow-x: hidden;
+			overflow-y: scroll;
+			border-bottom: 1px solid #dcdcdc;
+
+			// PRODUCT ITEM
+			.item {
+				position: relative;
+				height: 70px;
+				padding: 10px;
+				overflow: hidden;
+				.lui.flexbox.block();
+				.lui.flexbox.align-items(center);
+				.lui.flexbox.justify-content(space-between);
+
+				&:after {
+					position: absolute;
+					bottom: 0;
+					left: 15px;
+					right: 15px;
+					content: "";
+					border-top: 1px solid #f2f2f2;
+				}
+
+				// PRODUCT IMAGE
+				.image {
+					.lui.flexbox.block();
+					.lui.flexbox.align-items(center);
+					.lui.flexbox.justify-content(center);
+					width: 40px;
+					height: 40px;
+
+					// IE FLEXBOX FIX
+					div {
+						width: 100%;
+
+						img {
+							display: block;
+							margin: 0 auto;
+							max-width: 40px;
+							max-height: 40px;
+						}
+					}
+				}
+
+				// NAME AND PRICE
+				.texts {
+					// flex(1 1 auto) did some weird stuff
+					width: calc(~"100% - 40px - 20px");
+					padding: 0 10px;
+
+					.name {
+						display: block;
+						padding: 0 0 3px 0;
+						width: 100%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						text-decoration: none;
+						white-space: nowrap;
+						font-weight: bold;
+					}
+
+					.pcs {
+						font-size: 14px;
+					}
+					.price {
+						font-weight: bold;
+						font-size: 14px;
+					}
+				}
+
+				// ACTIONS
+				.remove {
+					width: 20px;
+					text-align: center;
+
+					a {
+						display: block;
+						width: 20px;
+						height: 20px;
+						line-height: 20px;
+						font-size: 20px;
+						text-decoration: none;
+						color: silver;
+
+						&:hover {
+							color: gray;
+						}
+					}
+				}
+			}
+		}
+
+		.final_price {
+			text-align: center;
+			padding: 10px;
+			font-size: 15px 15px 10px 15px;
+		}
+
+		.actions {
+			padding: 5px;
+
+			.lui_button {
+				margin: 0;
 			}
 		}
 	}
