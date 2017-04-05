@@ -1,4 +1,16 @@
 $(document).ready(function(){
+
+	/*$("body").addEventListener('touchmove',function(e){
+		if($("body").hasClass("noscroll")){
+			e.preventDefault();
+		}
+	});
+*/
+	/*$('body').on('touchmove', function (e) {
+		if (!$('.scrollable').has($(e.target)).length) e.preventDefault();
+	});*/
+
+
 	$(".lui_phone_navbar > a").click(function(){
 
 		// CLOSE OPENED WINDOW WITH SAME BUTTON
@@ -7,8 +19,8 @@ $(document).ready(function(){
 			$(this).removeClass("active");
 
 			// ENABLE SCROLLING
-			if($("html").hasClass("overlay_opened")){
-				$("html").removeClass("overlay_opened");
+			if($("html").hasClass("noscroll")){
+				$("html").removeClass("noscroll");
 			}
 
 			// CLOSE ALL OPENED WINDOWS
@@ -22,8 +34,8 @@ $(document).ready(function(){
 			$(this).siblings().removeClass("active");
 
 			// ENABLE SCROLLING
-			if($("html").hasClass("overlay_opened")){
-				$("html").removeClass("overlay_opened");
+			if($("html").hasClass("noscroll")){
+				$("html").removeClass("noscroll");
 			}
 			// CLOSE ALL OPENED WINDOWS
 			$(".lui_phone_navbar_overlay.opened").each(function(){
@@ -36,7 +48,7 @@ $(document).ready(function(){
 			var attr = $(this).attr("data-target");
 			// IF LINK OPENS WINDOW, DISABLE BODY SCROLL
 			if(attr){
-				$("html").addClass("overlay_opened");
+				$("html").addClass("noscroll");
 				$(".lui_phone_navbar_overlay[data-target="+attr+"]").toggleClass("opened");
 			}
 		}
