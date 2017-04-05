@@ -197,6 +197,101 @@
 			}
 		}
 	}
+
+	// SEARCH
+	.search {
+		// INPUT AND SUBMIT
+		form {
+			.lui.flexbox.block();
+			.lui.flexbox.align-items(center);
+			.lui.flexbox.justify-content(space-between);
+
+			input {
+				// USING INPUT STYLES FROM LUI-3_forms-base COMPONENT
+				// STYLES BELLOW ARE OVERWRITING SOME OF BUTTON STYLES TO FIT ITS PLACE BETTER
+				.lui.form.item.value.input(auto);
+				.lui.flexbox.flex(1 1 auto);
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				border-right-width: 0;
+				border-color: white;
+
+				// FOCUS STATE IS NOT REALLY NEEDED,
+				// MOBILE DEVICES WILL THROW KEYBOARD AT YOUR SCREEN
+				&:focus {
+					border-color: white;
+				}
+
+			}
+
+			button {
+				// USING .lui_button CLASSNAME
+				// STYLES BELLOW ARE OVERWRITING SOME OF BUTTON STYLES TO FIT ITS PLACE BETTER
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+
+				&:before {
+					padding-right: 0;
+				}
+			}
+		}
+
+		// LOADING
+		.loading {
+			position: relative;
+			padding: 50px 0 15px 0;
+			font-size: 19px;
+			color: white;
+			text-align: center;
+
+			// TODO: LUI COMPONENT WITH BASIC ANIMATIONS
+			@-webkit-keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+			@-moz-keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+			@-ms-keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+			@keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+
+			&:before {
+				position: absolute;
+				top: 10px;
+				left: 50%;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin-left: -15px;
+				font-size: 30px;
+
+				-webkit-animation: search_loading_spinner 1s linear infinite;
+				-moz-animation: search_loading_spinner 1s linear infinite;
+				-ms-animation: search_loading_spinner 1s linear infinite;
+				animation: search_loading_spinner 1s linear infinite;
+			}
+		}
+
+		// FOUND RESULTS
+		.results {
+			padding: 15px 0;
+			text-align: center;
+			color: white;
+
+			.found {
+				padding: 0 0 15px 0;
+				font-size: 19px;
+			}
+		}
+	}
 }
 
 html.overlay_opened {
