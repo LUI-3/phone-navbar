@@ -1,16 +1,4 @@
 $(document).ready(function(){
-
-	/*$("body").addEventListener('touchmove',function(e){
-		if($("body").hasClass("noscroll")){
-			e.preventDefault();
-		}
-	});
-*/
-	/*$('body').on('touchmove', function (e) {
-		if (!$('.scrollable').has($(e.target)).length) e.preventDefault();
-	});*/
-
-
 	$(".lui_phone_navbar > a").click(function(){
 
 		// CLOSE OPENED WINDOW WITH SAME BUTTON

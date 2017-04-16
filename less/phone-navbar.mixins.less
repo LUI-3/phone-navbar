@@ -5,21 +5,21 @@
 // PHONE - NAVBAR - MIXINS
 
 
-.lui.phone_navbar when (@lui_pagebar_mixins_enabled = true){
+.lui.navbar when (@lui_navbar_mixins = true){
 	.this(){
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background: white;
-		z-index: 200;
-		height: 55px;
-		z-index: 2010;
+		background: @lui_navbar_bg_color;
+		height: @lui_navbar_height;
+		z-index: @lui_navbar_z-index;;
 
 		.lui.flexbox.block();
 		.lui.flexbox.align-items(center);
 		.lui.flexbox.justify-content(stretch);
-		border-top: 1px solid silver;
+
+		border-top: 1px solid @lui_navbar_border_color;
 
 		&.static {
 			position: static;
@@ -36,7 +36,7 @@
 		.lui.flexbox.justify-content(center);
 		.lui.user-select.none();
 		outline: none;
-		width: 20%;
+		width: @lui_navbar_item_width;
 		height: 100%;
 		padding: 0 5px;
 		text-decoration: none;
@@ -66,23 +66,23 @@
 			top: 6px;
 			right: 10px;
 			display: block;
-			width: 17px;
-			height: 17px;
-			line-height: 17px;
-			background: red;
-			border-radius: 30px;
+			width: @lui_navbar_item_number_size;
+			height: @lui_navbar_item_number_size;
+			line-height: @lui_navbar_item_number_size;
+			background: @lui_navbar_item_number_bg;
+			border-radius: 100%;
 			text-align: center;
 			font-family: inherit;
-			font-size: 9px;
-			color: white;
+			font-size: @lui_navbar_item_number_font-size;
+			color: @lui_navbar_item_number_color;
 			content: attr(data-number);
 		}
 
 		// ICON AND TEXT STYLES
 		& > div {
 			text-align: center;
-			font-size: 12px;
-			color: gray;
+			font-size: @lui_navbar_item_icon_font-size;
+			color: @lui_navbar_item_icon_color;
 
 			&:before {
 				display: block;
@@ -94,26 +94,27 @@
 
 		// ACTIVE STYLES
 		&.active {
-			background: #1e8de2;
+			background: @lui_navbar_item_active_bg;
 
 			& > div {
-				color: white;
+				color: @lui_navbar_item_active_icon_color;
 			}
 		}
 	}
 }
 
-.lui.phone_navbar_overlay {
+.lui.navbar.overlay when (@lui_navbar_overlay_mixins = true){
 	.this(){
 		position: fixed;
 		top: 100%;
 		left: 0;
 		bottom: -100%;
 		right: 0;
-		z-index: 2000;
-		background: rgba(0,0,0,0.5);
+		z-index: @lui_navbar_overlay_z-index;
+		background: @lui_navbar_overlay_bg_color;
 		opacity: 0;
 		.lui.transition.this(400ms);
+
 		// GPU ACCELERATION
 		.lui.transform.this(translateZ(0));
 
@@ -124,70 +125,71 @@
 
 	.opened(){
 		top: 0;
-		bottom: 55px;
+		bottom: @lui_navbar_height;
 		opacity: 1;
 	}
 
-	.menu {
+	// SIMPLE MENU
+	.menu when (@lui_navbar_overlay_menu_mixins = true){
 		.this(){
 			// RESET, JUST IN CASE
 			list-style: none;
 			margin: 0;
 			padding: 0;
 
-			background: white;
-			color: black;
+			background: @lui_navbar_overlay_menu_bg_color;
+			color: @lui_navbar_overlay_menu_text_color;
 			border-radius: 5px;
 			overflow: hidden;
 		}
 
-		.item(){
+		.item() when (@lui_navbar_overlay_menu_item_mixins = true){
 			display: block;
 
 			// RESET, JUST IN CASE
 			margin: 0;
 			padding: 0;
 
-			border-bottom: 1px solid #dcdcdc;
+			border-bottom: 1px solid @lui_navbar_overlay_menu_borders;
 
 			&:last-child {
 				border-bottom: 0;
 			}
 		}
 
-		.head(){
+		.head() when (@lui_navbar_overlay_menu_head_mixins = true){
 			display: block;
 
 			// RESET, JUST IN CASE
 			margin: 0;
 			padding: 0;
 			padding: 15px;
-			background: #f7f7f7;
-			border-bottom: 1px solid #dcdcdc;
+			background: @lui_navbar_overlay_menu_header_bg_color;
+			border-bottom: 1px solid @lui_navbar_overlay_menu_borders;
 			font-size: 16px;
-			color: #454545;
+			color: @lui_navbar_overlay_menu_header_text_color;
 
 			&:last-child {
 				border-bottom: 0;
 			}
 		}
 
-		.spacer(){
+		.spacer() when (@lui_navbar_overlay_menu_spacer_mixins = true){
 			display: block;
 
 			// RESET, JUST IN CASE
 			margin: 0;
 			padding: 0;
 			height: 10px;
-			background: #dcdcdc;
-			border-bottom: 1px solid #dcdcdc;
+			background: @lui_navbar_overlay_menu_spacer_bg_color;
+			border-bottom: 1px solid @lui_navbar_overlay_menu_borders;
 
 			&:last-child {
 				border-bottom: 0;
 			}
 		}
 
-		.link(){
+		.link() when (@lui_navbar_overlay_menu_link_mixins = true){
 			position: relative;
 			display: block;
 			padding: 10px;
@@ -225,5 +227,292 @@
 				}
 			}
 		}
+	}
+
+	// EMPTY BASKET
+	.empty-basket when (@lui_navbar_overlay_empty_basket_mixins = true){
+		.this(){
+			text-align: center;
+			padding: 15px 0;
+
+			color: @lui_navbar_overlay_empty_basket_text_color;
+
+			// FONTAWESOME ICON
+			// ICON IS DEFINED VIA CLASSNAME IN HTML
+			&:before {
+				display: block;
+				font-size: 60px;
+				line-height: 60px;
+				height: 60px;
+				color: white;
+			}
+		}
+
+		.text() when (@lui_navbar_overlay_empty_basket_text_mixins = true){
+			padding: 30px 0 40px 0;
+			font-size: 19px;
+		}
+
+		.spacer() when (@lui_navbar_overlay_empty_basket_spacer_mixins = true){
+			padding: 15px 0;
+		}
+	}
+
+	// BASKET (WITH ITEMS)
+	.basket when (@lui_navbar_overlay_basket_mixins = true){
+		.this(){
+			.lui.flexbox.block();
+			.lui.flexbox.flex-direction(column);
+			height: 100%;
+			background: @lui_navbar_overlay_basket_bg_color;
+			color: @lui_navbar_overlay_basket_text_color;
+			border-radius: 5px;
+			overflow: hidden;
+
+			.lui.transform.this(translateZ(0));
+		}
+
+		// HEADER
+		.head() when (@lui_navbar_overlay_basket_head_mixins = true){
+			padding: 15px;
+			background: @lui_navbar_overlay_basket_head_bg_color;
+			border-bottom: 1px solid @lui_navbar_overlay_basket_border_color;
+			font-size: 16px;
+			color: @lui_navbar_overlay_basket_head_text_color;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		// PRODUCTS AREA
+		.products when (@lui_navbar_overlay_basket_products_mixins = true){
+			.this(){
+				.lui.flexbox.flex(1 1 auto);
+				overflow-x: hidden;
+				overflow-y: scroll;
+				border-bottom: 1px solid @lui_navbar_overlay_basket_border_color;
+			}
+
+			.item() when (@lui_navbar_overlay_basket_products_item_mixins = true){
+				// PRODUCT ITEM
+				.this(){
+					position: relative;
+					height: 70px;
+					padding: 10px;
+					overflow: hidden;
+					.lui.flexbox.block();
+					.lui.flexbox.align-items(center);
+					.lui.flexbox.justify-content(space-between);
+
+					// BOTTOM BORDER
+					// NOT FULL WIDTH, THATS WHY USING "AFTER"
+					&:after {
+						position: absolute;
+						bottom: 0;
+						left: 15px;
+						right: 15px;
+						content: "";
+						border-top: 1px solid #f2f2f2;
+					}
+				}
+
+				// PRODUCT IMAGE
+				.image() when (@lui_navbar_overlay_basket_products_item_image_mixins = true){
+					.lui.flexbox.block();
+					.lui.flexbox.align-items(center);
+					.lui.flexbox.justify-content(center);
+					width: 40px;
+					height: 40px;
+					overflow: hidden;
+
+					// IE FLEXBOX FIX
+					div {
+						width: 100%;
+
+						img {
+							display: block;
+							margin: 0 auto;
+							max-width: 40px;
+							max-height: 40px;
+						}
+					}
+				}
+
+				// PRODUCT NAME, PRICE AND SUCH
+				.texts() when (@lui_navbar_overlay_basket_products_item_texts_mixins = true){
+					.this(){
+						// flex(1 1 auto) did some weird shit
+						width: calc(~"100% - 40px - 20px");
+						padding: 0 10px;
+					}
+
+					// PRODUCT NAME
+					.name() when (@lui_navbar_overlay_basket_products_item_texts_name_mixins = true){
+						display: block;
+						padding: 0 0 3px 0;
+						width: 100%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						text-decoration: none;
+						white-space: nowrap;
+						font-size: @lui_navbar_overlay_basket_product_name_text_size;
+						font-weight: bold;
+					}
+
+					// HOW MANY IPHONES YOU WANNA BUY THIS TIME?
+					.pcs() when (@lui_navbar_overlay_basket_products_item_texts_pcs_mixins = true){
+						font-size: @lui_navbar_overlay_basket_product_pcs_text_size;
+					}
+
+					// HOW MUCH YOU'RE WASTING ON THEM
+					.price() when (@lui_navbar_overlay_basket_products_item_texts_price_mixins = true){
+						font-weight: bold;
+						font-size: @lui_navbar_overlay_basket_product_price_text_size;
+					}
+				}
+
+				// BUTTON/ICON TO REMOVE PRODUCT
+				.remove(){
+					.wrapper() when (@lui_navbar_overlay_basket_products_item_remove_wrap_mixins = true){
+						width: 20px;
+						text-align: center;
+					}
+
+					.icon() when (@lui_navbar_overlay_basket_products_item_remove_icon_mixins = true){
+						display: block;
+						width: 20px;
+						height: 20px;
+						line-height: 20px;
+						font-size: 20px;
+						text-decoration: none;
+						color: @lui_navbar_overlay_basket_product_remove_color;
+						.lui.user-select.none();
+
+						&:hover {
+							color: @lui_navbar_overlay_basket_product_remove_hover_color;
+						}
+					}
+				}
+			}
+		}
+
+		// PRICE OF ALL THOSE USELESS PRODUCTS YOU'RE BUYING
+		.final-price() when (@lui_navbar_overlay_basket_price_mixins = true){
+			text-align: center;
+			padding: 10px;
+			font-size: @lui_navbar_overlay_basket_final-price_text_size;
+		}
+
+		.actions {
+			.wrapper() when (@lui_navbar_overlay_basket_actions_wrap_mixins = true){
+				padding: 5px;
+			}
+
+			.button() when (@lui_navbar_overlay_basket_actions_button_mixins = true){
+				margin: 0; // RESET LUI_BUTTON MARGIN
+			}
+		}
+	}
+
+	// SEARCH
+	.search() when (@lui_navbar_overlay_search_mixins = true){
+		.form when (@lui_navbar_overlay_search_form_mixins = true){
+			.this(){
+				.lui.flexbox.block();
+				.lui.flexbox.align-items(center);
+				.lui.flexbox.justify-content(space-between);
+			}
+
+			// INPUT TO ENTER SEARCH TERM
+			.input() when (@lui_navbar_overlay_search_form_input_mixins = true){
+				// USING INPUT STYLES FROM LUI-3_forms-base COMPONENT
+				// STYLES BELLOW ARE OVERWRITING SOME OF BUTTON STYLES TO FIT ITS PLACE BETTER
+				.lui.form.item.value.input(auto);
+				.lui.flexbox.flex(1 1 auto);
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				border-right-width: 0;
+				border-color: white;
+
+				// FOCUS STATE IS NOT REALLY NEEDED AND IT LOOKED BAD
+				// MOBILE DEVICES WILL THROW KEYBOARD AT YOUR SCREEN
+				&:focus {
+					border-color: white;
+				}
+			}
+
+			.submit() when (@lui_navbar_overlay_search_form_submit_mixins = true){
+				// USING .lui_button CLASSNAME
+				// STYLES BELLOW ARE OVERWRITING SOME OF BUTTON STYLES TO FIT ITS PLACE BETTER
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+
+				&:before {
+					padding-right: 0;
+				}
+			}
+		}
+
+		.loading() when (@lui_navbar_overlay_search_loading_mixins = true){
+			position: relative;
+			padding: 50px 0 15px 0;
+			font-size: @lui_navbar_overlay_search_loading_text_size;
+			color: @lui_navbar_overlay_search_loading_text_color;
+			text-align: center;
+
+			// TODO: LUI COMPONENT WITH BASIC ANIMATIONS
+			@-webkit-keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+			@-moz-keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+			@-ms-keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+			@keyframes search_loading_spinner {
+				0%   {.lui.transform.this(rotate(0deg));  }
+				100% {.lui.transform.this(rotate(359deg));}
+			}
+
+			&:before {
+				position: absolute;
+				top: 15px;
+				left: 50%;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin-left: -15px;
+				font-size: 30px;
+
+				.lui.animation.this(search_loading_spinner @lui_navbar_overlay_search_loading_spinner_speed linear infinite);
+			}
+		}
+
+		.results {
+			.wrapper() when (@lui_navbar_overlay_search_results_wrap_mixins = true){
+				padding: 15px 0;
+				text-align: center;
+				color: @lui_navbar_overlay_search_results_color;
+			}
+
+			.found() when (@lui_navbar_overlay_search_results_found_mixins = true){
+				padding: 0 0 15px 0;
+				font-size: @lui_navbar_overlay_search_results_text_size;
+			}
+		}
+	}
+
+	.noscroll() when (@lui_navbar_noscroll_mixins = true){
+		overflow: hidden;
+
+		// DISABLE PAGE SCROLLING ON WINDOWS PHONE (IE)
+		-ms-touch-action: none;
+		touch-action: none;
 	}
 }

@@ -5,309 +5,152 @@
 // PHONE - NAVBAR - CLASSNAMES
 
 
-.@{lui_class_prefix}_phone_navbar when (@lui_phone_navbar_class_enabled = true){
-	.lui.phone_navbar.this();
+.@{lui_class_prefix}_phone_navbar when (@lui_navbar_class = true){
+	.lui.navbar.this();
 
 	& > a {
-		.lui.phone_navbar.item();
+		.lui.navbar.item();
 	}
 }
 
-.lui_phone_navbar_overlay {
-	.lui.phone_navbar_overlay.this();
+.lui_phone_navbar_overlay when (@lui_navbar_overlay_class = true){
+	.lui.navbar.overlay.this();
 
 	&.opened {
-		.lui.phone_navbar_overlay.opened();
+		.lui.navbar.overlay.opened();
 	}
 
 	// MENU
-	ul.menu {
-		.lui.phone_navbar_overlay.menu.this();
+	ul.menu when (@lui_navbar_overlay_menu_class = true){
+		.lui.navbar.overlay.menu.this();
 
-		li {
-			.lui.phone_navbar_overlay.menu.item();
+		li when (@lui_navbar_overlay_menu_item_class = true){
+			.lui.navbar.overlay.menu.item();
 
 			&.spacer {
-				.lui.phone_navbar_overlay.menu.spacer();
+				.lui.navbar.overlay.menu.spacer();
 			}
 
 			&.head {
-				.lui.phone_navbar_overlay.menu.head();
+				.lui.navbar.overlay.menu.head();
 			}
 
-			a {
-				.lui.phone_navbar_overlay.menu.link();
+			a when (@lui_navbar_overlay_menu_link_class = true){
+				.lui.navbar.overlay.menu.link();
 			}
 		}
 	}
 
 	// EMPTY BASKET
-	.empty_basket {
-		text-align: center;
-		padding: 15px 0;
+	.empty_basket when (@lui_navbar_overlay_empty_basket_class = true){
+		.lui.navbar.overlay.empty-basket.this();
 
-		&:before {
-			display: block;
-			font-size: 60px;
-			line-height: 60px;
-			height: 60px;
-			color: white;
+		& > .text when (@lui_navbar_overlay_empty_basket_text_class = true){
+			.lui.navbar.overlay.empty-basket.text();
 		}
-
-		& > .text {
-			padding: 30px 0 40px 0;
-			font-size: 19px;
-			color: white;
-		}
-		& > .spacer {
-			padding: 15px 0;
-			color: white;
+		& > .spacer when (@lui_navbar_overlay_empty_basket_spacer_class = true){
+			.lui.navbar.overlay.empty-basket.spacer();
 		}
 	}
 
-	// FILLED BASKET
-	.basket {
-		.lui.flexbox.block();
-		.lui.flexbox.flex-direction(column);
-		height: 100%;
-		background: white;
-		color: black;
-		border-radius: 5px;
-		overflow: hidden;
+	// BASKET (WITH ITEMS)
+	.basket when (@lui_navbar_overlay_basket_class = true){
+		.lui.navbar.overlay.basket.this();
 
-		.lui.transform.this(translateZ(0));
-
-		.head {
-			padding: 15px;
-			background: #f7f7f7;
-			border-bottom: 1px solid #dcdcdc;
-			font-size: 16px;
-			color: #454545;
-
-			&:last-child {
-				border-bottom: 0;
-			}
+		// HEADER
+		.head when (@lui_navbar_overlay_basket_head_class = true){
+			.lui.navbar.overlay.basket.head();
 		}
 
-		.products {
-			.lui.flexbox.flex(1 1 auto);
-			overflow-x: hidden;
-			overflow-y: scroll;
-			border-bottom: 1px solid #dcdcdc;
+		.products when (@lui_navbar_overlay_basket_products_class = true){
+			.lui.navbar.overlay.basket.products.this();
 
 			// PRODUCT ITEM
-			.item {
-				position: relative;
-				height: 70px;
-				padding: 10px;
-				overflow: hidden;
-				.lui.flexbox.block();
-				.lui.flexbox.align-items(center);
-				.lui.flexbox.justify-content(space-between);
-
-				&:after {
-					position: absolute;
-					bottom: 0;
-					left: 15px;
-					right: 15px;
-					content: "";
-					border-top: 1px solid #f2f2f2;
-				}
+			.item when (@lui_navbar_overlay_basket_products_item_class = true){
+				.lui.navbar.overlay.basket.products.item.this();
 
 				// PRODUCT IMAGE
-				.image {
-					.lui.flexbox.block();
-					.lui.flexbox.align-items(center);
-					.lui.flexbox.justify-content(center);
-					width: 40px;
-					height: 40px;
-					overflow: hidden;
-
-					// IE FLEXBOX FIX
-					div {
-						width: 100%;
-
-						img {
-							display: block;
-							margin: 0 auto;
-							max-width: 40px;
-							max-height: 40px;
-						}
-					}
+				.image when (@lui_navbar_overlay_basket_products_item_image_class = true){
+					.lui.navbar.overlay.basket.products.item.image();
 				}
 
 				// NAME AND PRICE
-				.texts {
-					// flex(1 1 auto) did some weird stuff
-					width: calc(~"100% - 40px - 20px");
-					padding: 0 10px;
+				.texts when (@lui_navbar_overlay_basket_products_item_texts_class = true){
+					.lui.navbar.overlay.basket.products.item.texts.this();
 
-					.name {
-						display: block;
-						padding: 0 0 3px 0;
-						width: 100%;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						text-decoration: none;
-						white-space: nowrap;
-						font-weight: bold;
+					.name when (@lui_navbar_overlay_basket_products_item_texts_name_class = true){
+						.lui.navbar.overlay.basket.products.item.texts.name();
 					}
 
-					.pcs {
-						font-size: 14px;
+					.pcs when (@lui_navbar_overlay_basket_products_item_texts_pcs_class = true){
+						.lui.navbar.overlay.basket.products.item.texts.pcs();
 					}
-					.price {
-						font-weight: bold;
-						font-size: 14px;
+
+					.price when(@lui_navbar_overlay_basket_products_item_texts_price_class = true){
+						.lui.navbar.overlay.basket.products.item.texts.price();
 					}
 				}
 
 				// ACTIONS
-				.remove {
-					width: 20px;
-					text-align: center;
+				.remove when (@lui_navbar_overlay_basket_products_item_remove_wrap_class = true){
+					.lui.navbar.overlay.basket.products.item.remove.wrapper();
 
-					a {
-						display: block;
-						width: 20px;
-						height: 20px;
-						line-height: 20px;
-						font-size: 20px;
-						text-decoration: none;
-						color: silver;
-						.lui.user-select.none();
-
-						&:hover {
-							color: gray;
-						}
+					a when (@lui_navbar_overlay_basket_products_item_remove_icon_class = true){
+						.lui.navbar.overlay.basket.products.item.remove.icon();
 					}
 				}
 			}
 		}
 
-		.final_price {
-			text-align: center;
-			padding: 10px;
-			font-size: 15px 15px 10px 15px;
+		.final_price when (@lui_navbar_overlay_basket_price_class = true){
+			.lui.navbar.overlay.basket.final-price();
 		}
 
-		.actions {
-			padding: 5px;
+		.actions when (@lui_navbar_overlay_basket_actions_class = true){
+			.lui.navbar.overlay.basket.actions.wrapper();
 
-			.lui_button {
-				margin: 0;
+			.lui_button when (@lui_navbar_overlay_basket_actions_button_class = true){
+				.lui.navbar.overlay.basket.actions.button();
 			}
 		}
 	}
 
 	// SEARCH
-	.search {
+	.search when (@lui_navbar_overlay_search_class = true){
 		// INPUT AND SUBMIT
-		form {
-			.lui.flexbox.block();
-			.lui.flexbox.align-items(center);
-			.lui.flexbox.justify-content(space-between);
+		form when (@lui_navbar_overlay_search_form_class = true){
+			.lui.navbar.overlay.search.form.this();
 
-			input {
-				// USING INPUT STYLES FROM LUI-3_forms-base COMPONENT
-				// STYLES BELLOW ARE OVERWRITING SOME OF BUTTON STYLES TO FIT ITS PLACE BETTER
-				.lui.form.item.value.input(auto);
-				.lui.flexbox.flex(1 1 auto);
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				border-right-width: 0;
-				border-color: white;
-
-				// FOCUS STATE IS NOT REALLY NEEDED,
-				// MOBILE DEVICES WILL THROW KEYBOARD AT YOUR SCREEN
-				&:focus {
-					border-color: white;
-				}
-
+			// INPUT TO ENTER SEARCH TERM
+			input when (@lui_navbar_overlay_search_form_input_class = true){
+				.lui.navbar.overlay.search.form.input();
 			}
 
-			button {
-				// USING .lui_button CLASSNAME
-				// STYLES BELLOW ARE OVERWRITING SOME OF BUTTON STYLES TO FIT ITS PLACE BETTER
-				border-top-left-radius: 0;
-				border-bottom-left-radius: 0;
-
-				&:before {
-					padding-right: 0;
-				}
+			button when (@lui_navbar_overlay_search_form_submit_class = true){
+				.lui.navbar.overlay.search.form.submit();
 			}
 		}
 
 		// LOADING
-		.loading {
-			position: relative;
-			padding: 50px 0 15px 0;
-			font-size: 19px;
-			color: white;
-			text-align: center;
-
-			// TODO: LUI COMPONENT WITH BASIC ANIMATIONS
-			@-webkit-keyframes search_loading_spinner {
-				0%   {.lui.transform.this(rotate(0deg));  }
-				100% {.lui.transform.this(rotate(359deg));}
-			}
-			@-moz-keyframes search_loading_spinner {
-				0%   {.lui.transform.this(rotate(0deg));  }
-				100% {.lui.transform.this(rotate(359deg));}
-			}
-			@-ms-keyframes search_loading_spinner {
-				0%   {.lui.transform.this(rotate(0deg));  }
-				100% {.lui.transform.this(rotate(359deg));}
-			}
-			@keyframes search_loading_spinner {
-				0%   {.lui.transform.this(rotate(0deg));  }
-				100% {.lui.transform.this(rotate(359deg));}
-			}
-
-			&:before {
-				position: absolute;
-				top: 15px;
-				left: 50%;
-				width: 30px;
-				height: 30px;
-				line-height: 30px;
-				text-align: center;
-				margin-left: -15px;
-				font-size: 30px;
-
-				-webkit-animation: search_loading_spinner 1s linear infinite;
-				-moz-animation: search_loading_spinner 1s linear infinite;
-				-ms-animation: search_loading_spinner 1s linear infinite;
-				animation: search_loading_spinner 1s linear infinite;
-			}
+		.loading when (@lui_navbar_overlay_search_loading_class = true){
+			.lui.navbar.overlay.search.loading();
 		}
 
 		// FOUND RESULTS
-		.results {
-			padding: 15px 0;
-			text-align: center;
-			color: white;
+		.results when (@lui_navbar_overlay_search_results_class = true){
+			.lui.navbar.overlay.search.results.wrapper();
 
-			.found {
-				padding: 0 0 15px 0;
-				font-size: 19px;
+			.found when (@lui_navbar_overlay_search_results_found_class = true){
+				.lui.navbar.overlay.search.results.found();
 			}
 		}
 	}
 }
 
-html.overlay_opened {
-	overflow: hidden;
-
-	// DISABLE PAGE SCROLLING ON WINDOWS PHONE (IE)
-	-ms-touch-action: none;
-	touch-action: none;
+html.overlay_opened when (@lui_navbar_body_scrollstop = true){
+	.lui.navbar.overlay.noscroll();
 
 	body {
-		overflow: hidden;
-
-		// DISABLE PAGE SCROLLING ON WINDOWS PHONE (IE)
-		-ms-touch-action: none;
-		touch-action: none;
+		.lui.navbar.overlay.noscroll();
 	}
 }

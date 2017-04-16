@@ -5,5 +5,182 @@
 // PHONE - NAVBAR - CONFIG
 
 
-// ENABLE / DISABLE .lui_pagebar
-@lui_phone_navbar_class_enabled:				true;
+// NAVBAR CLASSES
+@lui_navbar_class:          true;
+
+
+// OVERLAY CLASSES
+@lui_navbar_overlay_class:  true;
+
+
+// OVERLAY - MENU CLASSES
+@lui_navbar_overlay_menu_class:      true;
+@lui_navbar_overlay_menu_item_class: true;
+@lui_navbar_overlay_menu_link_class: true;
+
+
+// OVERLAY - EMPTY BASKET CLASSES
+@lui_navbar_overlay_empty_basket_class:        true;
+@lui_navbar_overlay_empty_basket_text_class:   true;
+@lui_navbar_overlay_empty_basket_spacer_class: true;
+
+
+// OVERLAY - BASKET CLASSES
+@lui_navbar_overlay_basket_class:                           true;
+@lui_navbar_overlay_basket_head_class:                      true;
+@lui_navbar_overlay_basket_products_class:                  true;
+@lui_navbar_overlay_basket_products_item_class:             true;
+@lui_navbar_overlay_basket_products_item_image_class:       true;
+@lui_navbar_overlay_basket_products_item_texts_class:       true;
+@lui_navbar_overlay_basket_products_item_texts_name_class:  true;
+@lui_navbar_overlay_basket_products_item_texts_pcs_class:   true;
+@lui_navbar_overlay_basket_products_item_texts_price_class: true;
+@lui_navbar_overlay_basket_products_item_remove_wrap_class: true;
+@lui_navbar_overlay_basket_products_item_remove_icon_class: true;
+@lui_navbar_overlay_basket_price_class:                     true;
+@lui_navbar_overlay_basket_actions_class:                   true;
+@lui_navbar_overlay_basket_actions_button_class:            true;
+
+
+// OVERLAY - SEARCH CLASSES
+@lui_navbar_overlay_search_class:               true;
+@lui_navbar_overlay_search_form_class:          true;
+@lui_navbar_overlay_search_form_input_class:    true;
+@lui_navbar_overlay_search_form_submit_class:   true;
+@lui_navbar_overlay_search_loading_class:       true;
+@lui_navbar_overlay_search_results_class:       true;
+@lui_navbar_overlay_search_results_found_class: true;
+
+
+// HTML / BODY CLASSES
+// these will disable page scrolling when overlay is opened
+@lui_navbar_body_scrollstop: true;
+
+
+
+// ---------
+
+
+
+// NAVBAR MIXINS
+@lui_navbar_mixins:            true;
+
+
+// OVERLAY MIXINS
+@lui_navbar_overlay_mixins:    true;
+
+
+// OVERLAY - MENU MIXINS
+@lui_navbar_overlay_menu_mixins:        true;
+@lui_navbar_overlay_menu_item_mixins:   true;
+@lui_navbar_overlay_menu_head_mixins:   true;
+@lui_navbar_overlay_menu_spacer_mixins: true;
+@lui_navbar_overlay_menu_link_mixins:   true;
+
+
+// OVERLAY - EMPTY BASKET MIXINS
+@lui_navbar_overlay_empty_basket_mixins:        true;
+@lui_navbar_overlay_empty_basket_text_mixins:   true;
+@lui_navbar_overlay_empty_basket_spacer_mixins: true;
+
+
+// OVERLAY - BASKET MIXINS
+@lui_navbar_overlay_basket_mixins:                           true;
+@lui_navbar_overlay_basket_head_mixins:                      true;
+@lui_navbar_overlay_basket_products_mixins:                  true;
+@lui_navbar_overlay_basket_products_item_mixins:             true;
+@lui_navbar_overlay_basket_products_item_image_mixins:       true;
+@lui_navbar_overlay_basket_products_item_texts_mixins:       true;
+@lui_navbar_overlay_basket_products_item_texts_name_mixins:  true;
+@lui_navbar_overlay_basket_products_item_texts_pcs_mixins:   true;
+@lui_navbar_overlay_basket_products_item_texts_price_mixins: true;
+@lui_navbar_overlay_basket_products_item_remove_wrap_mixins: true;
+@lui_navbar_overlay_basket_products_item_remove_icon_mixins: true;
+@lui_navbar_overlay_basket_price_mixins:                     true;
+@lui_navbar_overlay_basket_actions_wrap_mixins:              true;
+@lui_navbar_overlay_basket_actions_button_mixins:            true;
+
+
+// OVERLAY - SEARCH MIXINS
+@lui_navbar_overlay_search_mixins:             true;
+@lui_navbar_overlay_search_form_mixins:        true;
+@lui_navbar_overlay_search_form_input_mixins:  true;
+@lui_navbar_overlay_search_form_submit_mixins: true;
+
+@lui_navbar_overlay_search_loading_mixins: true;
+@lui_navbar_overlay_search_results_wrap_mixins: true;
+@lui_navbar_overlay_search_results_found_mixins: true;
+
+
+// HTML / BODY MIXINS
+// these will disable page scrolling when overlay is opened
+@lui_navbar_noscroll_mixins: true;
+
+// ---------
+
+
+// NAVBAR VARIABLES
+@lui_navbar_height:                   55px;
+@lui_navbar_z-index:                  2010;
+@lui_navbar_bg_color:               white;
+@lui_navbar_border_color:           silver;
+
+@lui_navbar_item_width:               20%;
+
+@lui_navbar_item_active_bg:         #1e8de2;
+
+@lui_navbar_item_icon_font-size:      12px; // FONTAWESOME ICON SIZE
+@lui_navbar_item_icon_color:        gray;
+@lui_navbar_item_active_icon_color: white;
+
+@lui_navbar_item_number_bg:         red;
+@lui_navbar_item_number_color:      white;
+@lui_navbar_item_number_size:         17px; // WIDTH + HEIGHT + LINE HEIGHT
+@lui_navbar_item_number_font-size:    9px;
+
+// OVERLAY VARIABLES
+@lui_navbar_overlay_z-index:          2000;
+@lui_navbar_overlay_bg_color:       rgba(0,0,0,0.5);
+
+// OVERLAY - MENU VARIABLES
+@lui_navbar_overlay_menu_bg_color:           white;
+@lui_navbar_overlay_menu_text_color:         black;
+@lui_navbar_overlay_menu_borders:            #dcdcdc;
+
+@lui_navbar_overlay_menu_header_bg_color:    #f7f7f7;
+@lui_navbar_overlay_menu_header_text_color:  #454545;
+
+@lui_navbar_overlay_menu_spacer_bg_color:    #dcdcdc;
+
+
+// OVERLAY - EMPTY BASKET VARIABLES
+@lui_navbar_overlay_empty_basket_text_color: white;
+
+
+// OVERLAY - BASKET (WITH ITEMS) VARIABLES
+@lui_navbar_overlay_basket_bg_color:         white;
+@lui_navbar_overlay_basket_text_color:       black;
+
+@lui_navbar_overlay_basket_border_color:     #dcdcdc;
+
+@lui_navbar_overlay_basket_head_bg_color:    #f7f7f7;
+@lui_navbar_overlay_basket_head_text_color:  #454545;
+
+@lui_navbar_overlay_basket_product_name_text_size:  16px;
+@lui_navbar_overlay_basket_product_pcs_text_size:   14px;
+@lui_navbar_overlay_basket_product_price_text_size: 14px;
+
+@lui_navbar_overlay_basket_product_remove_color:       silver;
+@lui_navbar_overlay_basket_product_remove_hover_color: gray;
+
+@lui_navbar_overlay_basket_final-price_text_size:        15px;
+
+
+// OVERLAY - SEARCH VARIABLES
+@lui_navbar_overlay_search_loading_text_size:     19px;
+@lui_navbar_overlay_search_loading_text_color:  white;
+@lui_navbar_overlay_search_loading_spinner_speed: 1s; // DURATION OF ANIMATION, LESS TIME = FASTER SPINNING
+
+@lui_navbar_overlay_search_results_color:   white;
+@lui_navbar_overlay_search_results_text_size: 19px;
+
