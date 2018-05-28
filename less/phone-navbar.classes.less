@@ -8,6 +8,12 @@
 .@{lui_class_prefix}_phone_navbar when (@lui_navbar_class = true){
 	.lui.navbar.this();
 
+	& when (@lui_navbar_hiding = true){
+		@media (min-width:@lui_navbar_hide_at){
+			display: none;
+		}
+	}
+
 	& > a {
 		.lui.navbar.item();
 	}
@@ -18,6 +24,12 @@
 
 	&.opened {
 		.lui.navbar.overlay.opened();
+	}
+
+	& when (@lui_navbar_hiding = true){
+		@media (min-width:@lui_navbar_hide_at){
+			display: none;
+		}
 	}
 
 	// MENU
